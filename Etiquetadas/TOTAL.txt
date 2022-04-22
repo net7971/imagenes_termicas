@@ -1,0 +1,9 @@
+SUB: 116
+TRAIN: 93
+TEST: 23
+
+================
+
+LINEAS: 22
+TRAIN: 17
+TEST: 5
