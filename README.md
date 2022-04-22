@@ -1,11 +1,11 @@
 # Set de datos de imágenes térmicas: líneas y sub estaciones eléctricas
 
 ## Etiquetadas:
-Contiene  imágenes térmicas con puntos calientes.
+Contiene  imágenes térmicas etiquetadas *con puntos calientes*.
 ![image](https://user-images.githubusercontent.com/16355783/164792500-6d82a118-30cd-4bca-be7f-33f45789bb74.png)
 
 ## Total:
-Contiene el total de imágenes térmicas.
+Contiene el total de imágenes térmicas: con y sin puntos calientes.
 ![image](https://user-images.githubusercontent.com/16355783/164792555-7a155562-ebde-482f-81da-ab6c518bd879.png)
 
 ## Software:
