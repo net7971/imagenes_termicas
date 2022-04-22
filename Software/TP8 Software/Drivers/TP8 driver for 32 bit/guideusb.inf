@@ -1,0 +1,77 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+provider=%GUIDE%
+DriverVer=3/16/2006,1.2.2600
+
+[SourceDisksNames]
+1=%DiskId%,,,
+ 
+[SourceDisksFiles]
+guideloader.sys=1,,
+guideusb.sys=1,,
+
+[DestinationDirs]
+WGUIDEDR.Files.Driver = 12
+WGUIDE.Files.Driver = 12
+
+[WGUIDEDR.Files.Driver]
+guideloader.sys
+
+[WGUIDE.Files.Driver]
+guideusb.sys
+
+[Manufacturer]
+%GUIDE%=GUIDE
+
+[GUIDE]
+%USB\VID_04B4&PID_0081.DeviceDesc%=WGUIDEDR, USB\VID_04B4&PID_0081
+%USB\VID_04B4&PID_1002.DeviceDesc%=WGUIDE, USB\VID_04B4&PID_1002
+
+[WGUIDEDR.NTx86]
+CopyFiles=WGUIDEDR.Files.Driver
+AddReg=WGUIDEDR.AddReg
+
+[WGUIDEDR.NTx86.Services]
+Addservice = WGUIDEDR, 0x00000002, WGUIDEDR.AddService
+
+[WGUIDEDR.AddService]
+DisplayName    = %WGUIDEDR.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\guideloader.sys
+LoadOrderGroup = Base
+
+[WGUIDEDR.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,guideloader.sys
+
+[WGUIDE.NTx86]
+CopyFiles=WGUIDE.Files.Driver
+AddReg=WGUIDE.AddReg
+
+[WGUIDE.NTx86.Services]
+Addservice = WGUIDE, 0x00000002, WGUIDE.AddService
+
+[WGUIDE.AddService]
+DisplayName    = %WGUIDE.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\guideusb.sys
+LoadOrderGroup = Base
+
+[WGUIDE.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,guideusb.sys
+
+[Strings]
+DiskId = "Install disk (1)"
+GUIDE="Wuhan Guide IR"
+USB\VID_04B4&PID_0081.DeviceDesc="GUIDE TP8  (guideloader.sys)"
+USB\VID_04B4&PID_1002.DeviceDesc="GUIDE TP8 After ReNumeration (guideusb.sys)"
+WGUIDEDR.SvcDesc="GUIDE TP8 Before ReNumeration (guideloader.sys)"
+WGUIDE.SvcDesc="GUIDE TP8 After ReNumeration (guideusb.sys)"
+

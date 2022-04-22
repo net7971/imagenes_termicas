@@ -1,0 +1,181 @@
+; Installation INF for the Cypress Generic USB Driver for Windows Vista
+; Processor support for OS unknown platforms.
+;
+; (c) Copyright 2009 Cypress Semiconductor Corporation
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+provider=%cyusb_Provider%
+DriverVer=06/05/2009,3.4.1.20
+
+[SourceDisksNames]
+1=%cyusb_Install%,,,
+
+[SourceDisksFiles]
+guideloader.sys=1,,
+TP8.SYS = 1
+
+[DestinationDirs]
+cyusbLoader.Files.Ext  = 10,System32\Drivers
+cyusb.Files.Ext = 10,System32\Drivers
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%cyusb_Provider%=Device,NTamd64
+
+;for x64 platforms  Device.NTamd64
+[Device.NTamd64]
+%USB\VID_04B4&PID_0081.DeviceDesc%=cyusbLoader, USB\VID_04B4&PID_0081
+%USB\VID_04B4&PID_1002.DeviceDesc%=cyusb, USB\VID_04B4&PID_1002
+
+[cyusbLoader]
+CopyFiles=cyusbLoader.Files.Ext
+AddReg=cyusbLoader.AddReg
+
+[cyusb]
+CopyFiles=cyusb.Files.Ext
+AddReg=cyusb.AddReg
+
+[cyusbLoader.HW]
+AddReg=cyusbLoader.AddReg.Guid
+
+
+[cyusb.HW]
+AddReg=cyusb.AddReg.Guid
+
+[cyusbLoader.Services]
+Addservice = cyusbLoader,2,cyusbLoader.AddService
+
+[cyusb.Services]
+Addservice = cyusb,2,cyusb.AddService
+
+[cyusbLoader.NT]
+CopyFiles=cyusbLoader.Files.Ext
+AddReg=cyusbLoader.AddReg
+
+
+[cyusb.NT]
+CopyFiles=cyusb.Files.Ext
+AddReg=cyusb.AddReg
+
+[cyusbLoader.NT.HW]
+AddReg=cyusbLoader.AddReg.Guid
+
+
+[cyusb.NT.HW]
+AddReg=cyusb.AddReg.Guid
+
+[cyusbLoader.NT.Services]
+Addservice = cyusbLoader,2,cyusbLoader.AddService
+
+[cyusb.NT.Services]
+Addservice = cyusb,2,cyusb.AddService
+
+[cyusbLoader.NTx86]
+CopyFiles=cyusbLoader.Files.Ext
+AddReg=cyusbLoader.AddReg
+
+
+[cyusb.NTx86]
+CopyFiles=cyusb.Files.Ext
+AddReg=cyusb.AddReg
+
+[cyusbLoader.NTx86.HW]
+AddReg=cyusbLoader.AddReg.Guid
+
+[cyusb.NTx86.HW]
+AddReg=cyusb.AddReg.Guid
+
+[cyusbLoader.NTx86.Services]
+Addservice = cyusbLoader,2,cyusbLoader.AddService
+
+[cyusb.NTx86.Services]
+Addservice = cyusb,2,cyusb.AddService
+
+[cyusbLoader.NTamd64]
+CopyFiles=cyusbLoader.Files.Ext
+AddReg=cyusbLoader.AddReg
+
+[cyusb.NTamd64]
+CopyFiles=cyusb.Files.Ext
+AddReg=cyusb.AddReg
+
+[cyusbLoader.NTamd64.HW]
+AddReg=cyusbLoader.AddReg.Guid
+
+[cyusb.NTamd64.HW]
+AddReg=cyusb.AddReg.Guid
+
+[cyusbLoader.NTamd64.Services]
+Addservice = cyusbLoader,2,cyusbLoader.AddService
+
+[cyusb.NTamd64.Services]
+Addservice = cyusb,2,cyusb.AddService
+
+[cyusbLoader.AddReg]
+; Deprecating - do not use in new apps to identify a cyusbLoader driver
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,guideloader.sys
+; You may optionally include a check for DriverBase in your application to check for a cyusbLoader driver
+HKR,,DriverBase,,guideloader.sys
+HKR,"Parameters","MaximumTransferSize",0x10001,4096
+HKR,"Parameters","DebugLevel",0x10001,2
+HKR,,FriendlyName,,%cyusbLoader_Description%
+
+[cyusb.AddReg]
+; Deprecating - do not use in new apps to identify a cyusb driver
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,TP8.SYS
+; You may optionally include a check for DriverBase in your application to check for a cyusb driver
+HKR,,DriverBase,,TP8.SYS
+HKR,"Parameters","MaximumTransferSize",0x10001,4096
+HKR,"Parameters","DebugLevel",0x10001,2
+HKR,,FriendlyName,,%cyusb_Description%
+
+[cyusbLoader.AddService]
+DisplayName    = %cyusbLoader_Description%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\guideloader.sys
+LoadOrderGroup = Base
+AddReg         = cyusbLoader.AddReg
+
+[cyusb.AddService]
+DisplayName    = %cyusb_Description%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\TP8.SYS
+AddReg         = cyusb.AddReg
+LoadOrderGroup = Base
+
+[cyusbLoader.Files.Ext]
+guideloader.SYS
+
+[cyusb.Files.Ext]
+TP8.SYS
+
+[cyusbLoader.AddReg.Guid]
+HKR,,DriverGUID,,%cyusbLoader.GUID%
+
+[cyusb.AddReg.Guid]
+HKR,,DriverGUID,,%cyusb.GUID%
+
+[Strings]
+GYUSB_Provider    = "Guide"
+cyusb_Company     = "Guide Infrared Corporation"
+cyusbLoader_Description="GUIDE TP8 Before ReNumeration (guideloader.sys)"
+cyusb_Description = "Guide Generic USB Driver(TP8.sys)"
+cyusb_DisplayName = "Guide USB Generic TP8"
+cyusb_Install     = "Guide cyusb Driver Installation Disk (1)"
+USB\VID_04B4&PID_0081.DeviceDesc="GUIDE TP8"
+USB\VID_04B4&PID_1002.DeviceDesc="Guide USB Generic Driver TP8(2.0.0.00)"
+cyusbLoader.GUID="{AE18AA60-7F6A-11d4-97DD-00010229B959}"
+cyusb.GUID="{AE18AA60-7F6A-11d4-97DD-00010229B959}"
+cyusb_Unused      = "."
