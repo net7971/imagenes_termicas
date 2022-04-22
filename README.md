@@ -2,12 +2,16 @@
 
 ## Etiquetadas:
 Contiene  imágenes térmicas con puntos calientes.
+![image](https://user-images.githubusercontent.com/16355783/164792500-6d82a118-30cd-4bca-be7f-33f45789bb74.png)
 
 ## Total:
 Contiene el total de imágenes térmicas.
+![image](https://user-images.githubusercontent.com/16355783/164792555-7a155562-ebde-482f-81da-ab6c518bd879.png)
 
 ## Software:
 Contiene el software LabelImg y el de la cámara infrarroja TP8S (IrAnalyser)
+![image](https://user-images.githubusercontent.com/16355783/164792390-e4d06785-b0de-4662-90c1-dfbea57594bb.png)
+
 
 
 # roboflow
@@ -19,7 +23,7 @@ Aquí encontrarán dos set de datos de subestaciones eléctricas:
 ## 1. Subestaciones_con_DA
 Imágenes térmicas de subestaciones eléctricas con puntos calientes, con la aplicación de técnicas de Data Augmentation.
 ![image](https://user-images.githubusercontent.com/16355783/164792141-918d422e-6660-46d5-a3e4-895fbab3d158.png)
-![image](https://user-images.githubusercontent.com/16355783/164792161-9a896418-b664-4abe-9a7f-d2557c051b87.png)
+![image](https://user-images.githubusercontent.com/16355783/164792332-bb6fa0b3-299a-4909-8f39-0eaea3f29aa3.png)
 
 
 ## 2. Subestaciones_sin_DA
