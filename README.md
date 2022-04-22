@@ -7,7 +7,7 @@ Contiene  imágenes térmicas con puntos calientes.
 Contiene el total de imágenes térmicas.
 
 ## Software:
-Contiene el software LabelImg y el de la cámara infrarroja TP8S
+Contiene el software LabelImg y el de la cámara infrarroja TP8S (IrAnalyser)
 
 
 # roboflow
