@@ -1,4 +1,6 @@
-# Set de datos de imágenes térmicas: líneas y sub estaciones eléctricas
+# Imágenes térmicas: líneas y sub estaciones eléctricas
+
+Set de datos utilizado en la investigación *"Detection of hot spots in thermal images of Peruvian electrical substations"*, candidata a ser publicada en la revista *IEEE Latin America Transactions*
 
 ## Etiquetadas:
 Contiene  imágenes térmicas etiquetadas *con puntos calientes*.
