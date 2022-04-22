@@ -6,7 +6,7 @@ Set de datos utilizado en la investigación *"Detection of hot spots in thermal 
 Contiene  imágenes térmicas etiquetadas *con puntos calientes*.
 - Líneas:	22 imágenes.
 - Subestaciones: 116 imágenes.
--
+
 ![image](https://user-images.githubusercontent.com/16355783/164792500-6d82a118-30cd-4bca-be7f-33f45789bb74.png)
 
 ## Total:
